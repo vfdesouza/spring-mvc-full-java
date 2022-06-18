@@ -14,7 +14,7 @@ public class Request {
     @Column(nullable = false)
     private BigDecimal negotiatedValue;
     @Column(nullable = false)
-    private LocalDate deliveryDate;
+    private String deliveryDate;
     @Column(nullable = false)
     private String productUrl;
     @Column(nullable = false)
@@ -46,11 +46,11 @@ public class Request {
         this.negotiatedValue = negotiatedValue;
     }
 
-    public LocalDate getDeliveryDate() {
+    public String getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(LocalDate deliveryDate) {
+    public void setDeliveryDate(String deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 

@@ -9,8 +9,30 @@
     <title>Home</title>
 </head>
     <body>
+        <div class="p-3 mb-2 bg-info d-flex justify-content-between">
+            <h3>Mudi</h3>
+            <h3>Logon</h3>
+        </div>
         <div class="container">
-            <div class="card" th:each="request : ${requests}">
+            <div class="md-6 p-5 mb-1 bg-secondary rounded-3">
+                <h1 class="display-4">Meus Pedidos</h1>
+            </div>
+            <nav class="navbar navbar-expand bg-light bg-light d-flex justify-content-between mb-3 rounded-2">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="">Todos</a>
+                    <a class="nav-item nav-link href=">Aguardando</a>
+                    <a class="nav-item nav-link href=">Aprovado</a>
+                    <a class="nav-item nav-link href=">Entregue</a>
+                </div>
+                <a href="/formCad"><button class="btn btn-success my-2 my-sm-0">Novo</button></a>
+            </nav>
+            <form th:action="@{/home}" method="get">
+                    <div class="input-group mb-3">
+                        <input name="productName" class="form-control" type="text"placeholder="Product search...">
+                        <button class="btn btn-primary" type="submit" id="button-addon1">Button</button>
+                     </div>              
+            </form>
+            <div class="card mb-2" th:each="request : ${requests}">
                 <div class="card-header" th:text="${request.productName}">Nome do produto</div>
                 <div class="card-body">
                     <div class="row">
