@@ -11,10 +11,10 @@
         </div>
         <nav class="navbar navbar-expand bg-light bg-light d-flex justify-content-between mb-3 rounded-2">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="">Todos</a>
-                <a class="nav-item nav-link href=">Aguardando</a>
-                <a class="nav-item nav-link href=">Aprovado</a>
-                <a class="nav-item nav-link href=">Entregue</a>
+                <a class="nav-item nav-link" href="/home">Todos</a>
+                <a th:classappend="${statusRequest} == 'waiting' ? 'active'" class="nav-item nav-link" href="/home/waiting">Aguardando</a>
+                <a th:classappend="${statusRequest} == 'approved' ? 'active'" class="nav-item nav-link" href="/home/approved">Aprovado</a>
+                <a th:classappend="${statusRequest} == 'delivered' ? 'active'" class="nav-item nav-link" href="/home/delivered">Entregue</a>
             </div>
             <a href="/formCad"><button class="btn btn-success my-2 my-sm-0">Novo</button></a>
         </nav>
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-8 mb-3">
                         <div class="row">
-                            <div class="col-md-5">Valor: <span th:text="${request.negotiatedValue}">200,99</span></div>
+                            <div class="col-md-5">Valor: <span th:text="${'R$ ' + #numbers.formatDecimal(request.negotiatedValue,3,'POINT',2,'COMMA')}"></span></div>
                             <div class="col-md-7">Data da entrega: <span
                                     th:text="${request.deliveryDate}">10/02/2020</span></div>
                         </div>
