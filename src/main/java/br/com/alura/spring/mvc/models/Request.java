@@ -1,26 +1,34 @@
 package br.com.alura.spring.mvc.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Entity
 public class Request {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
+    @NotBlank
     private String productName;
-    @Column(nullable = false)
     private BigDecimal negotiatedValue;
-    @Column(nullable = false)
+    @NotBlank
     private String deliveryDate;
-    @Column(nullable = false)
+    @NotBlank
     private String productUrl;
-    @Column(nullable = false)
+    @NotBlank
     private String imageUrl;
-    @Column(nullable = false)
     private String description;
+
+    @Enumerated(EnumType.STRING)
+    private StatusRequest statusRequest;
+
+    public StatusRequest getStatusRequest() {
+        return statusRequest;
+    }
+
+    public void setStatusRequest(StatusRequest statusRequest) {
+        this.statusRequest = statusRequest;
+    }
 
     public Long getId() {
         return id;
