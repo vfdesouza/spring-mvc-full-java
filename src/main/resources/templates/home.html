@@ -27,6 +27,7 @@
         
         <div class="card mb-2" th:each="request : ${requests}">
             <th:block th:switch="${request.statusRequest.name()}">
+                <div th:case="'null'" class="card-header alert alert-warning" th:text="${request.productName}">Nome do produto</div>
                 <div th:case="'WAITING'" class="card-header alert alert-warning" th:text="${request.productName}">Nome do produto</div>
                 <div th:case="'APPROVED'" class="card-header alert alert-success" th:text="${request.productName}">Nome do produto</div>
                 <div th:case="'DELIVERED'" class="card-header alert alert-dark" th:text="${request.productName}">Nome do produto</div>

@@ -54,6 +54,7 @@ public class RequestController {
         if(result.hasErrors()) {
             return "formCad";
         }
+        request.setStatusRequest(StatusRequest.valueOf("WAITING"));
         rr.save(request);
         return "redirect:/home";
     }
