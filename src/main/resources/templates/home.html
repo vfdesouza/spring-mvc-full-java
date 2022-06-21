@@ -12,12 +12,12 @@
 
         <nav class="navbar navbar-expand bg-light bg-light d-flex justify-content-between mb-3 rounded-2">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/home">Todos</a>
-                <a th:classappend="${statusRequest} == 'waiting' ? 'active'" class="nav-item nav-link" href="/home/waiting">Aguardando</a>
-                <a th:classappend="${statusRequest} == 'approved' ? 'active'" class="nav-item nav-link" href="/home/approved">Aprovado</a>
-                <a th:classappend="${statusRequest} == 'delivered' ? 'active'" class="nav-item nav-link" href="/home/delivered">Entregue</a>
+                <a class="nav-item nav-link" href="/home">All</a>
+                <a th:classappend="${statusRequest} == 'waiting' ? 'active'" class="nav-item nav-link" href="/home/waiting">Waiting</a>
+                <a th:classappend="${statusRequest} == 'approved' ? 'active'" class="nav-item nav-link" href="/home/approved">Approved</a>
+                <a th:classappend="${statusRequest} == 'delivered' ? 'active'" class="nav-item nav-link" href="/home/delivered">Delivered</a>
             </div>
-            <a href="/formCad"><button class="btn btn-success my-2 my-sm-0">Novo</button></a>
+            <a href="/formCad"><button class="btn btn-success my-2 my-sm-0">New</button></a>
         </nav>
 
         <form th:action="@{/home}" method="get">
@@ -28,25 +28,23 @@
         </form>
         
         <div class="card mb-2" th:each="request : ${requests}">
-
             <th:block th:switch="${request.statusRequest.name()}">
-                <div th:case="'WAITING'" class="card-header alert alert-warning" th:text="${request.productName}">Nome do produto</div>
-                <div th:case="'APPROVED'" class="card-header alert alert-success" th:text="${request.productName}">Nome do produto</div>
-                <div th:case="'DELIVERED'" class="card-header alert alert-dark" th:text="${request.productName}">Nome do produto</div>
+                <div th:case="'WAITING'" class="card-header alert alert-warning" th:text="${request.productName}">Product Name</div>
+                <div th:case="'APPROVED'" class="card-header alert alert-success" th:text="${request.productName}">Product Name</div>
+                <div th:case="'DELIVERED'" class="card-header alert alert-dark" th:text="${request.productName}">Product Name</div>
             </th:block>
-
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-sm-8 mb-3">
                         <div class="row">
-                            <div class="col-md-5">Valor: <span th:text="${'R$ ' + #numbers.formatDecimal(request.negotiatedValue,3,'POINT',2,'COMMA')}"></span></div>
-                            <div class="col-md-7">Data da entrega: <span th:text="${request.deliveryDate}">10/02/2020</span></div>
+                            <div class="col-md-5">Price: <span th:text="${'R$ ' + #numbers.formatDecimal(request.negotiatedValue,3,'POINT',2,'COMMA')}"></span></div>
+                            <div class="col-md-7">Delivery date: <span th:text="${request.deliveryDate}"></span></div>
                         </div>
 
-                        <div>Produto:</div>
+                        <div>Product:</div>
                         <div><input class="form-control" th:value="${request.productUrl}" value="url do produto"></div>
 
-                        <div>Descrição:</div>
+                        <div>Description:</div>
                         <div>
                             <textarea class="form-control" th:text="${request.description}"
                                 placeholder="Descrição do produto..."></textarea>
