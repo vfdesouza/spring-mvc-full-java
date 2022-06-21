@@ -9,6 +9,7 @@
         <div class="md-6 p-5 mb-1 bg-secondary rounded-3">
             <h1 class="display-4">Title</h1>
         </div>
+
         <nav class="navbar navbar-expand bg-light bg-light d-flex justify-content-between mb-3 rounded-2">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/home">Todos</a>
@@ -18,6 +19,7 @@
             </div>
             <a href="/formCad"><button class="btn btn-success my-2 my-sm-0">Novo</button></a>
         </nav>
+
         <form th:action="@{/home}" method="get">
             <div class="input-group mb-3">
                 <input name="productName" class="form-control" type="text" placeholder="Product search...">
@@ -26,8 +28,8 @@
         </form>
         
         <div class="card mb-2" th:each="request : ${requests}">
+
             <th:block th:switch="${request.statusRequest.name()}">
-                <div th:case="'null'" class="card-header alert alert-warning" th:text="${request.productName}">Nome do produto</div>
                 <div th:case="'WAITING'" class="card-header alert alert-warning" th:text="${request.productName}">Nome do produto</div>
                 <div th:case="'APPROVED'" class="card-header alert alert-success" th:text="${request.productName}">Nome do produto</div>
                 <div th:case="'DELIVERED'" class="card-header alert alert-dark" th:text="${request.productName}">Nome do produto</div>
@@ -38,8 +40,7 @@
                     <div class="col-12 col-sm-8 mb-3">
                         <div class="row">
                             <div class="col-md-5">Valor: <span th:text="${'R$ ' + #numbers.formatDecimal(request.negotiatedValue,3,'POINT',2,'COMMA')}"></span></div>
-                            <div class="col-md-7">Data da entrega: <span
-                                    th:text="${request.deliveryDate}">10/02/2020</span></div>
+                            <div class="col-md-7">Data da entrega: <span th:text="${request.deliveryDate}">10/02/2020</span></div>
                         </div>
 
                         <div>Produto:</div>
