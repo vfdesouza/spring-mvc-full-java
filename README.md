@@ -10,6 +10,6 @@
 ##### - Editor de texto para o Front-end: Visual Studio Code;
 ##### - Spring Data JPA e o banco de dados MySQL;
 ##### - DBever como gerenciador do banco de dados;
-##### - Framework Spring MVC;
+##### - Spring MVC;
 ##### - Thymeleaf para o HTML;
 ##### - Bootstrap como Framework CSS para estilização.
